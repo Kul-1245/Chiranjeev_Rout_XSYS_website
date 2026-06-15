@@ -22,11 +22,11 @@ export const profile = {
   links: {
     linkedin: "https://www.linkedin.com/in/chiranjeev-rout", // TODO: confirm handle
     github: "https://github.com/chiranjeev-rout", // TODO or remove
-    resume: "/resume.pdf", // TODO: drop your PDF into /public/resume.pdf
+    resume: "/Chiranjeev_Rout_XSYS_website/resume.pdf", // TODO: drop your PDF into /public/resume.pdf
     twitter: "", // TODO optional
   },
   // Drop a square headshot at /public/profile.jpg to replace the placeholder.
-  photo: "/profile.jpg",
+  photo: "/Chiranjeev_Rout_XSYS_website/profile.jpg",
 };
 
 export const about = {

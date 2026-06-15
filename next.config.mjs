@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
+  basePath: '/Chiranjeev_Rout_XSYS_website',
+  assetPrefix: '/Chiranjeev_Rout_XSYS_website/',
   reactStrictMode: true,
   images: {
     unoptimized: true,
