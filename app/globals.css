@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   Design tokens
+   Dark is the default identity (premium navy lab at night).
+   Light mode re-grounds the same system on paper white.
+   Electric blue is the only bright accent; gold is reserved
+   exclusively for achievements / awards.
+   ============================================================ */
+
+:root {
+  --bg: #ffffff;
+  --surface: #f5f8fd;
+  --surface-2: #eaf0f9;
+  --border: #dde5f1;
+  --navy: #0b1f3a;
+  --accent: #2d6cff;
+  --accent-2: #5b8cff;
+  --gold: #a9791b;
+  --text: #0b1f3a;
+  --muted: #51607c;
+  --grid: rgba(11, 31, 58, 0.05);
+}
+
+.dark {
+  --bg: #060a14;
+  --surface: #0d1526;
+  --surface-2: #121e33;
+  --border: #1d2a45;
+  --navy: #0b1f3a;
+  --accent: #3d76ff;
+  --accent-2: #7aa0ff;
+  --gold: #e3b23c;
+  --text: #e9f0fb;
+  --muted: #93a1bd;
+  --grid: rgba(122, 160, 255, 0.06);
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-feature-settings: "ss01", "cv01";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* Faint hexagonal/grid lattice — the molecular substrate behind sections */
+.lattice {
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* Eyebrow label: a periodic-table-style cell + monospace tag */
+.eyebrow {
+  font-family: var(--font-mono);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+}
+
+.bond-line {
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--border) 12%,
+    var(--border) 88%,
+    transparent
+  );
+}
+
+.glass {
+  background: color-mix(in srgb, var(--surface) 82%, transparent);
+  backdrop-filter: blur(12px);
+}
+
+/* Thin scrollbar that matches the theme */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 999px;
+  border: 2px solid var(--bg);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
+
+/* Focus ring — accessibility floor */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@layer components {
+  .shell {
+    @apply mx-auto w-full max-w-shell px-5 sm:px-8;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-all duration-200;
+  }
+  .btn-primary {
+    @apply btn bg-accent text-white hover:brightness-110 hover:-translate-y-0.5;
+  }
+  .btn-ghost {
+    @apply btn border border-hair text-ink hover:border-accent hover:text-accent;
+  }
+  .card {
+    @apply rounded-2xl border border-hair bg-surface p-6 transition-all duration-300;
+  }
+  .chip {
+    @apply inline-flex items-center rounded-full border border-hair bg-surface-2 px-3 py-1 text-xs text-muted;
+  }
+}
